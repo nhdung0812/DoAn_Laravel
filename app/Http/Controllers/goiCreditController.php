@@ -15,7 +15,7 @@ class goiCreditController extends Controller
     {
         //
         $goicredit = GoiCredit::all();
-        return view('Goi-Credit.Ds_goi_credit');
+        return view('Goi-Credit.Ds_goi_credit',compact('goicredit'));
     }
 
     /**

@@ -17,7 +17,7 @@
                             </tr>
                         </thead>
                         <tbody>                       
-                            @foreach (true)
+                            @foreach ($goicredit as $goi)
                             <tr>
                                 
                                 <td>{{$goi->id}}</td>
