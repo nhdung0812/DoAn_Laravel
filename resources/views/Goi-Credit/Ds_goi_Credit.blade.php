@@ -4,8 +4,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h2 >DANh SÁCH Gói Credit</h2>
-                    <a href="" type="button" class="btn btn-primary waves-effect waves-light">Thêm Câu Hỏi</a><br><br>
+                    <h2 >DANh SÁCH GÓI CREDITS</h2>
+                <a href="{{route('goi-credit.them-moi')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm Gói Credit</a><br><br>
 
                         <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
                         <thead>
@@ -14,19 +14,21 @@
                                 <th>Tên Gói</th>
                                 <th>Credit</th>
                                 <th>Số Tiền</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>                       
-                            @foreach (true)
+                            @foreach ($goicredit as $goi)
                             <tr>
                                 
                                 <td>{{$goi->id}}</td>
                                 <td>{{$goi->ten_goi}}</td>
                                 <td>{{$goi->credit}}</td>
                                 <td>{{$goi->so_tien}}</td>
-                                <a href="{{ route('linh-vuc.cap-nhat', ['id' => $lv->id])}}" class="btn btn-success waves-effect waves-light">
+                                <td>
+                                <a href="{{ route('goi-credit.cap-nhat', ['id' => $goi->id])}}" class="btn btn-success waves-effect waves-light">
                                         <i class="fe-edit"></i></a>
-                                <a href="{{ route('linh-vuc.xoa', ['id' => $lv->id])}}"class="btn btn-danger waves-effect waves-light">
+                                <a href="{{ route('goi-credit.xoa', ['id' => $goi->id])}}"class="btn btn-danger waves-effect waves-light">
                                         <i class="fe-trash-2"></i>
                                     </a>
                                 </td>  
