@@ -25,7 +25,8 @@ class goiCreditController extends Controller
      */
     public function create()
     {
-        //
+        //Thêm Gói Credit
+        return view('Goi-Credit.form-goi');
         
     }
 
@@ -37,7 +38,14 @@ class goiCreditController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Thêm Gói Credit
+        $goicredit = new GoiCredit;
+        $goicredit->ten_goi = $request->ten_goi_credit;
+        $goicredit->credit = $request->credit;
+        $goicredit->so_tien = $request->so_tien;
+        $goicredit->save();
+        
+        return redirect()->route('goi-credit.danh-sach');
     }
 
     /**
@@ -59,7 +67,9 @@ class goiCreditController extends Controller
      */
     public function edit($id)
     {
-        //
+        //Cập Nhật Gói Credit
+        $goicredit = GoiCredit::find($id);
+        return view('Goi-Credit.form-goi', compact('goicredit'));
     }
 
     /**
@@ -72,6 +82,13 @@ class goiCreditController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $goicredit = GoiCredit::find($id);
+        $goicredit->ten_goi = $request->ten_goi_credit;
+        $goicredit->credit = $request->credit;
+        $goicredit->so_tien = $request->so_tien;
+        $goicredit->save();
+
+        return redirect()->route('goi-credit.danh-sach');
     }
 
     /**
@@ -83,5 +100,8 @@ class goiCreditController extends Controller
     public function destroy($id)
     {
         //
+        $cauhoi = GoiCredit::find($id);
+        $cauhoi->forceDelete();
+        return redirect()->route('goi-credit.danh-sach');
     }
 }

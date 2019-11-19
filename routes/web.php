@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('layout');
-})->name('dashboard');
+})->name('dashboard')->middleware('KiemTraDangNhap::class');
 
 Route::prefix('linh-vuc')->group(function(){
     Route::name('linh-vuc.')->group(function(){
@@ -50,3 +50,6 @@ Route::prefix('goi-credit')->group(function(){
     });
 
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
