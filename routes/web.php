@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('layout');
-})->name('dashboard')->middleware('KiemTraDangNhap::class');
+})->name('dashboard')->middleware('auth');
 
 Route::prefix('linh-vuc')->group(function(){
     Route::name('linh-vuc.')->group(function(){
