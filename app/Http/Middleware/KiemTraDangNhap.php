@@ -15,9 +15,7 @@ class KiemTraDangNhap
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()&&user()->email == "huydung"){
             return $next($request);
-        }
        
     }
 }
