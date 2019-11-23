@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('layout');
 })->name('dashboard');
 
+
 Route::prefix('linh-vuc')->group(function(){
     Route::name('linh-vuc.')->group(function(){
         Route::get('/','LinhVucController@index')->name('danh-sach');
