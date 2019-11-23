@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('layout');
-})->name('dashboard')->middleware('auth');
+})->name('dashboard');
 
 Route::prefix('linh-vuc')->group(function(){
     Route::name('linh-vuc.')->group(function(){
