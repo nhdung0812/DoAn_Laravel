@@ -342,7 +342,7 @@
                     <a href="/cau-hoi">Danh Sách Câu Hỏi </a>
                 </li>
                 <li>
-                    <a href="#">Danh Sách Người Chơi </a>
+                    <a href="/nguoi-choi">Danh Sách Người Chơi </a>
                 </li>
                 <li>
                     <a href="/goi-credit">Danh Sách Gói Credit </a>

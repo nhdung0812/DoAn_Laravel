@@ -49,7 +49,17 @@ Route::prefix('goi-credit')->group(function(){
         Route::post('cap-nhat/{id}', 'goiCreditController@update')->name('xu-ly-cap-nhat');
         Route::get('xoa/{id}', 'goiCreditController@destroy')->name('xoa');
     });
-
 });
+Route::prefix('nguoi-choi')->group(function(){
+    Route::name('nguoi-choi.')->group(function(){
+        Route::get('/','NguoiChoiController@index')->name('danh-sach');
+        Route::get('them-moi', 'NguoiChoiController@create')->name('them-moi');
+        Route::post('them-moi', 'NguoiChoiController@store')->name('xu-ly-them-moi');
+        Route::get('cap-nhat/{id}', 'NguoiChoiController@edit')->name('cap-nhat');
+        Route::post('cap-nhat/{id}', 'NguoiChoiController@update')->name('xu-ly-cap-nhat');
+        Route::get('xoa/{id}', 'NguoiChoiController@destroy')->name('xoa');
+    });
+});
+// 
 Auth::routes();
 Route::get('/home','HomeController@index')->name('home');
