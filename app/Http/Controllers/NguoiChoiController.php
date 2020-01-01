@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\GoiCredit;
-class goiCreditController extends Controller
+use App\NguoiChoi;
+class NguoiChoiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class goiCreditController extends Controller
     public function index()
     {
         //
-        $goicredit = GoiCredit::all();
-        return view('Goi-Credit.Ds_goi_credit',compact('goicredit'));
+        $nguoichoi = NguoiChoi::all();
+        return view('Nguoi-Choi.Danh_Sach_Nguoi_Choi', compact('nguoichoi'));
     }
 
     /**
@@ -25,8 +25,9 @@ class goiCreditController extends Controller
      */
     public function create()
     {
-        //Thêm Gói Credit
-        return view('Goi-Credit.form-goi');
+        //
+        return view('Nguoi-Choi.Form_Nguoi_Choi');
+
     }
 
     /**
@@ -37,14 +38,14 @@ class goiCreditController extends Controller
      */
     public function store(Request $request)
     {
-        //Thêm Gói Credit
-        $goicredit = new GoiCredit;
-        $goicredit->ten_goi = $request->ten_goi_credit;
-        $goicredit->credit = $request->credit;
-        $goicredit->so_tien = $request->so_tien;
-        $goicredit->save();
-        
-        return redirect()->route('goi-credit.danh-sach');
+        //
+        $nguoichoi = new NguoiChoi;
+        $nguoichoi->nguoi_choi_id = $request->nguoi_choi_id;
+        $nguoichoi->so_cau = $request->so_cau;
+        $nguoichoi->diem = $request->diem;
+        $nguoichoi->ngay_gio = $request->ngay_gio;
+        $nguoichoi->save();
+        return redirect()->route('nguoi-choi.danh-sach');
     }
 
     /**
@@ -66,9 +67,7 @@ class goiCreditController extends Controller
      */
     public function edit($id)
     {
-        //Cập Nhật Gói Credit
-        $goicredit = GoiCredit::find($id);
-        return view('Goi-Credit.form-goi', compact('goicredit'));
+        //
     }
 
     /**
@@ -81,13 +80,6 @@ class goiCreditController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $goicredit = GoiCredit::find($id);
-        $goicredit->ten_goi = $request->ten_goi_credit;
-        $goicredit->credit = $request->credit;
-        $goicredit->so_tien = $request->so_tien;
-        $goicredit->save();
-
-        return redirect()->route('goi-credit.danh-sach');
     }
 
     /**
@@ -99,8 +91,5 @@ class goiCreditController extends Controller
     public function destroy($id)
     {
         //
-        $cauhoi = GoiCredit::find($id);
-        $cauhoi->forceDelete();
-        return redirect()->route('goi-credit.danh-sach');
     }
 }

@@ -18,4 +18,5 @@
         <!-- End Page content -->
         <!-- ============================================================== -->
    <!-- Footer Start -->
+   
 @include('partials.footer')
