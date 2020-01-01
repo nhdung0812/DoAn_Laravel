@@ -31,8 +31,8 @@ Route::prefix('linh-vuc')->group(function(){
 Route::prefix('cau-hoi')->group(function(){
     Route::name('cau-hoi.')->group(function(){
         Route::get('/','CauHoiController@index')->name('danh-sach');
-        Route::get('them-moi', 'CauHoiController@create')->name('them-moi');
-        Route::post('them-moi', 'CauHoiController@store')->name('xu-ly-them-moi');
+      
+        Route::post('them-moi', 'CauHoiController@store')->name('them-moi');
         Route::get('cap-nhat/{id}', 'CauHoiController@edit')->name('cap-nhat');
         Route::post('cap-nhat/{id}', 'CauHoiController@update')->name('xu-ly-cap-nhat');
         Route::get('xoa/{id}', 'CauHoiController@destroy')->name('xoa');

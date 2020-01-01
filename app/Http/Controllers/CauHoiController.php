@@ -16,7 +16,8 @@ class CauHoiController extends Controller
     {
         //
         $cauhoi = CauHoi::all();
-        return view('Cau-Hoi.Ds_Cau_Hoi',compact('cauhoi'));
+        $linhvuc = LinhVuc::all();
+        return view('Cau-Hoi.Ds_Cau_Hoi',compact('cauhoi','linhvuc'));
     }
 
     /**

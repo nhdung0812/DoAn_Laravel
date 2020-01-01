@@ -19,7 +19,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 >DANh SÁCH CÂU HỎI</h2>
-                    <a href="{{ route('cau-hoi.them-moi')}}" type="button" class="btn btn-primary waves-effect waves-light">Thêm Câu Hỏi</a><br><br>
+                    <a href="" data-target="#modal-add" data-toggle="modal"class="btn btn-primary waves-effect waves-light">Thêm Câu Hỏi</a><br><br>
 
                         <table id="scroll-horizontal-datatable" class="table w-100 nowrap">
                         <thead>
@@ -69,7 +69,7 @@
 
 <!-- Vendor js -->
 <script src="assets/js/vendor.min.js"></script>
-
+@include('Cau-Hoi.form-them')
 <!-- third party js -->
 <script src="{{ asset ('assets/libs/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset ('assets/libs/datatables/dataTables.bootstrap4.js')}}"></script>
@@ -90,4 +90,68 @@
 
 <!-- App js-->
 <script src="{{ asset ('assets/js/app.min.js')}}"></script>
+<script>
+    $(document).ready(function () {
+          $('#form-add').submit(function(){
+          var linh_vuc = $('#linh_vuc').val();
+          var noi_dung = $('#noi_dung').val();
+          var phuong_an_a = $('#phuong_an_a').val();
+          var phuong_an_b = $('#phuong_an_b').val();
+          var phuong_an_c = $('#phuong_an_c').val();
+          var phuong_an_d = $('#phuong_an_d').val();
+          var dap_an = $('#dap_an').val();
+          var url = $(this).attr('data-url');
+          e.preventDefault();
+            $.ajax({
+              type:'POST',
+              url:url,
+              data:{
+                "linh_vuc":linh_vuc,
+                "noi_dung":noi_dung,
+                "phuong_an_a":phuong_an_a,
+                "phuong_an_b":phuong_an_b,
+                "phuong_an_c":phuong_an_c,
+                "phuong_an_d":phuong_an_d,
+                "dap_an":dap_an,
+              },
+               success: function(data) {
+                if(data=="true"){
+                    alert(data);
+                }
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                //xử lý lỗi tại đây
+                alert("loi");
+              }
+            });
+        });
+
+
+        $('.btn-edit').click(function(e){
+
+        var url = $(this).attr('data-url');
+        //alert(id);
+        $('#modal-edit').modal('show');
+
+        e.preventDefault();
+
+        $.ajax({
+            //phương thức get
+            type: 'get',
+            url:url,
+            success: function (response) {
+              //đưa dữ liệu controller gửi về điền vào input trong form edit.
+              $('#id_type-edit').val(response.data.id_type);
+              $('#ten_san_pham-edit').val(response.data.name);
+              $('#price-edit').val(response.data.promotion_price);
+              $('#img').html('<img src="../../image/product/' + response.data.image + '" style="height:80px;"/>');
+              $('#unit-edit').val(response.data.unit);
+              //thêm data-url chứa route sửa todo đã được chỉ định vào form sửa.
+              //$('#form-edit').attr("data-url","Crudajax/update/"+response.data.id);
+            },
+          });
+      });
+
+    });
+</script>
 @endsection
